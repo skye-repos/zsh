@@ -73,9 +73,16 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 ## Theme
-source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+if [[ -d "$HOME/.config/zsh/powerlevel10k" ]]; then
+    source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+else
+    git clone https://github.com/romkatv/powerlevel10k.git $HOME/.config/zsh/powerlevel10k/
+    source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+fi
 
 ## Syntax Highlighting - NOTE INSTALL THE PLUGIN
 if [[ -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]]; then

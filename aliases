@@ -1,19 +1,10 @@
 # -*- mode: sh; -*-
-
-# Debian apt aliases:
-# alias sai='sudo apt install'
-# alias sau='sudo apt update && sudo apt upgrade'
-# alias sap='sudo apt purge'
-# alias as='apt show'
-# alias sarc='sudo apt autoremove && sudo apt autoclean'
-
 # Common aliases for relatively common things.
 alias open='xdg-open '
 alias sctl='systemctl'
 alias jctl='journalctl'
 alias jpnb='jupyter-notebook --browser=firefox'
 alias sudo='sudo ' # Space at the end of aliases successive alias completion
-alias bat='batcat '
 alias cat='bat ' # A cat replacement
 
 # Changes to the 'ls' family of commands.
@@ -38,6 +29,18 @@ alias install='sudo apt install '
 alias search='sudo apt search '
 alias remove='sudo apt remove '
 alias update='sudo apt update && sudo apt upgrade'
+
+# Brew aliases
+alias install='brew install '
+alias search='brew search '
+alias remove='brew uninstall '
+alias update='brew update'
+
+# DNF aliases
+alias install='sudo dnf install '
+alias search='sudo dnf search '
+alias remove='sudo dnf remove '
+alias update='sudo dnf update'
 
 #random crap
 alias count_lines='ll | wc -l'

@@ -1,0 +1,44 @@
+# -*- mode: sh; -*-
+
+# Debian apt aliases:
+# alias sai='sudo apt install'
+# alias sau='sudo apt update && sudo apt upgrade'
+# alias sap='sudo apt purge'
+# alias as='apt show'
+# alias sarc='sudo apt autoremove && sudo apt autoclean'
+
+# Common aliases for relatively common things.
+alias open='xdg-open '
+alias sctl='systemctl'
+alias jctl='journalctl'
+alias jpnb='jupyter-notebook --browser=firefox'
+alias sudo='sudo ' # Space at the end of aliases successive alias completion
+alias bat='batcat '
+alias cat='bat ' # A cat replacement
+
+# Changes to the 'ls' family of commands.
+alias ls='exa' # Changing "ls" to "exa"
+alias ll='ls -al' # The obvious answer.
+alias l='ll -h' # Human readable.
+alias lg='ll --git' # List git status of individual files.
+alias lln='ll | grep --color=always "\-> $HOME" | awk '\''{print $7 $8 $9}'\'' ' # View symlinks in current folder.
+alias llnv='ll | grep --color=always "\-> $HOME" -v | awk '\''{print $7}'\'' ' # View everything not symlinked in current folder.
+
+# Same thing as lln and llnv but using the find command instead.
+alias fdln='find ~ -maxdepth 1 -type l  | cut -d '\''/'\'' -f4 | cut -d '\''.'\'' -f2,3,4 | sort -d | awk '\''FNR > 1'\'''
+alias fdlnv='find ~ -maxdepth 1 ! -type l  | cut -d '\''/'\'' -f4 | cut -d '\''.'\'' -f2,3,4 | sort -d | awk '\''FNR > 1'\'''
+
+# Ask for confirmation on basic shit.
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Apt aliases
+alias install='sudo apt install '
+alias search='sudo apt search '
+alias remove='sudo apt remove '
+alias update='sudo apt update && sudo apt upgrade'
+
+#random crap
+alias count_lines='ll | wc -l'
+alias count_dots='ls -al | grep --color=always "\-> $HOME" -v | awk '\''{print $7}'\'' | grep "^\." | wc -l' # Count the number of dot files in the current folder.

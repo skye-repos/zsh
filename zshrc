@@ -1,4 +1,9 @@
 # -*- mode: sh; -*-
+
+if [[ ! -d "$HOME/.config/zsh" ]]; then
+    mkdir $HOME/.config/zsh
+fi
+
 ## PATH
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -25,7 +30,13 @@ fi
 source $HOME/.config/zsh/aliases
 
 ## Autocomplete
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -d "$HOME/.config/zsh/zsh-autosuggestions" ]]; then
+    source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.config/zsh/zsh-autosuggestions/
+    source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*:processes' command 'NOCOLORS=1 ps -U $(whoami)|sed "/ps/d"'
@@ -67,4 +78,9 @@ source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 
 ## Syntax Highlighting - NOTE INSTALL THE PLUGIN
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -d "$HOME/.config/zsh/zsh-syntax-highlighting" ]]; then
+    source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/zsh-syntax-highlighting/
+    source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

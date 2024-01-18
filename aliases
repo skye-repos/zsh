@@ -7,6 +7,11 @@ alias jpnb='jupyter-notebook --browser=firefox'
 alias sudo='sudo ' # Space at the end of aliases successive alias completion
 alias cat='bat ' # A cat replacement
 
+# Make cd-ing up directories easier.
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # Changes to the 'ls' family of commands.
 alias ls='eza' # Changing "ls" to "exa"
 alias ll='ls -al' # The obvious answer.
@@ -14,10 +19,6 @@ alias l='ll -h' # Human readable.
 alias lg='ll --git' # List git status of individual files.
 alias lln='ll | grep --color=always "\-> $HOME" | awk '\''{print $7 $8 $9}'\'' ' # View symlinks in current folder.
 alias llnv='ll | grep --color=always "\-> $HOME" -v | awk '\''{print $7}'\'' ' # View everything not symlinked in current folder.
-
-# Same thing as lln and llnv but using the find command instead.
-alias fdln='find ~ -maxdepth 1 -type l  | cut -d '\''/'\'' -f4 | cut -d '\''.'\'' -f2,3,4 | sort -d | awk '\''FNR > 1'\'''
-alias fdlnv='find ~ -maxdepth 1 ! -type l  | cut -d '\''/'\'' -f4 | cut -d '\''.'\'' -f2,3,4 | sort -d | awk '\''FNR > 1'\'''
 
 # Ask for confirmation on basic shit.
 alias rm='rm -i'

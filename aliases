@@ -8,7 +8,7 @@ alias sudo='sudo ' # Space at the end of aliases successive alias completion
 alias cat='bat ' # A cat replacement
 
 # Changes to the 'ls' family of commands.
-alias ls='exa' # Changing "ls" to "exa"
+alias ls='eza' # Changing "ls" to "exa"
 alias ll='ls -al' # The obvious answer.
 alias l='ll -h' # Human readable.
 alias lg='ll --git' # List git status of individual files.
@@ -24,17 +24,17 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Apt aliases
-alias install='sudo apt install '
-alias search='sudo apt search '
-alias remove='sudo apt remove '
-alias update='sudo apt update && sudo apt upgrade'
+# # Apt aliases
+# alias install='sudo apt install '
+# alias search='sudo apt search '
+# alias remove='sudo apt remove '
+# alias update='sudo apt update && sudo apt upgrade'
 
-# Brew aliases
-alias install='brew install '
-alias search='brew search '
-alias remove='brew uninstall '
-alias update='brew update'
+# # Brew aliases
+# alias install='brew install '
+# alias search='brew search '
+# alias remove='brew uninstall '
+# alias update='brew update'
 
 # DNF aliases
 alias install='sudo dnf install '

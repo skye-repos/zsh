@@ -25,13 +25,13 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# # Apt aliases
+## Apt aliases
 # alias install='sudo apt install '
 # alias search='sudo apt search '
 # alias remove='sudo apt remove '
 # alias update='sudo apt update && sudo apt upgrade'
 
-# # Brew aliases
+## MacPorts aliases
 alias install='sudo port install '
 alias search='sudo port search '
 alias remove='sudo port uninstall '

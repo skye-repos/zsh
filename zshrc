@@ -4,7 +4,7 @@
 if [[ ! -d "$HOME/.config/zsh" ]]; then
     mkdir -p $HOME/.config/zsh
 fi
-ZSHDIR="$HOME/.config/zsh/"
+ZSHDIR="$HOME/.config/zsh"
 
 ## PATH
 if [[ ! -d "$HOME/.local/bin/" ]]; then
@@ -34,7 +34,7 @@ fi
 ## Aliases
 source $ZSHDIR/aliases
 
-## Autocomplete
+## Autosuggestions
 if [[ -d "$ZSHDIR/zsh-autosuggestions" ]]; then
     source $ZSHDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
@@ -42,13 +42,18 @@ else
     source $ZSHDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-zstyle ':completion:*' completer _expand_alias _complete _ignored
-zstyle ':completion:*:processes' command 'NOCOLORS=1 ps -U $(whoami)|sed "/ps/d"'
-zstyle ':completion:*:processes' insert-ids menu yes select
-zstyle ':completion:*:processes-names' command 'NOCOLORS=1 ps xho command|sed "s/://g"'
-zstyle ':completion:*:processes' sort false
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-bindkey '^R' history-incremental-search-backward
+## Completions
+if [[ -d "$ZSHDIR/zsh-autocomplete" ]]; then
+    source $ZSHDIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+else
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSHDIR/zsh-autocomplete/
+    source $ZSHDIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
+bindkey              '^I'         menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
 
 ## BAT as a manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"

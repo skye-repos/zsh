@@ -32,16 +32,17 @@ alias mv='mv -i'
 # alias update='sudo apt update && sudo apt upgrade'
 
 # # Brew aliases
-# alias install='brew install '
-# alias search='brew search '
-# alias remove='brew uninstall '
-# alias update='brew update'
+alias install='sudo port install '
+alias search='sudo port search '
+alias remove='sudo port uninstall '
+alias update='sudo port selfupdate'
+alias upgrade='sudo port upgrade '
 
 # DNF aliases
-alias install='sudo dnf install '
-alias search='sudo dnf search '
-alias remove='sudo dnf remove '
-alias update='sudo dnf update'
+# alias install='sudo dnf install '
+# alias search='sudo dnf search '
+# alias remove='sudo dnf remove '
+# alias update='sudo dnf update'
 
 #random crap
 alias count_lines='ll | wc -l'

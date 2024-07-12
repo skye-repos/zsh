@@ -1,9 +1,7 @@
 # -*- mode: sh; -*-
 # Common aliases for relatively common things.
-alias open='xdg-open '
 alias sctl='systemctl'
 alias jctl='journalctl'
-alias jpnb='jupyter-notebook --browser=firefox'
 alias sudo='sudo ' # Space at the end of aliases successive alias completion
 alias cat='bat ' # A cat replacement
 
@@ -25,25 +23,37 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+BREW='/opt/homebrew/bin/brew'
+PORT='/opt/local/bin/port'
+
+## Homebrew aliases
+if [[ -x $BREW ]]; then
+	alias install='brew install '
+	alias search='brew search '
+	alias remove='brew uninstall '
+	alias update='brew update '
+	alias upgrade='brew upgrade '
+fi
+
+## MacPorts aliases
+if [[ -x $PORT ]]; then
+	alias install='sudo port install '
+	alias search='sudo port search '
+	alias remove='sudo port uninstall '
+	alias update='sudo port selfupdate'
+	alias upgrade='sudo port upgrade '
+fi
+
+alias pinentry='pinentry-mac '
+
 ## Apt aliases
 # alias install='sudo apt install '
 # alias search='sudo apt search '
 # alias remove='sudo apt remove '
 # alias update='sudo apt update && sudo apt upgrade'
 
-## MacPorts aliases
-alias install='sudo port install '
-alias search='sudo port search '
-alias remove='sudo port uninstall '
-alias update='sudo port selfupdate'
-alias upgrade='sudo port upgrade '
-
 # DNF aliases
 # alias install='sudo dnf install '
 # alias search='sudo dnf search '
 # alias remove='sudo dnf remove '
 # alias update='sudo dnf update'
-
-#random crap
-alias count_lines='ll | wc -l'
-alias count_dots='ls -al | grep --color=always "\-> $HOME" -v | awk '\''{print $7}'\'' | grep "^\." | wc -l' # Count the number of dot files in the current folder.

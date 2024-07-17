@@ -12,6 +12,14 @@ if [[ ! -d "$HOME/.local/bin/" ]]; then
 fi
 export PATH="$PATH:$HOME/.local/bin"
 
+if [[ -f "$HOME/.zprofile" ]]; then
+  source $HOME/.zprofile
+fi
+
+if [[ -f "$HOME/.profile" ]]; then
+  source $HOME/.profile
+fi
+
 ## History File
 HISTFILE="$ZSHDIR/zsh_history"
 HISTSIZE=10000
@@ -32,7 +40,7 @@ else
 fi
 
 ## Aliases
-source $ZSHDIR/aliases
+source $ZSHDIR/aliases.zsh
 
 ## Autosuggestions
 if [[ -d "$ZSHDIR/zsh-autosuggestions" ]]; then

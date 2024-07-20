@@ -8,7 +8,7 @@ ZSHDIR="$HOME/.config/zsh"
 
 ## PATH
 if [[ ! -d "$HOME/.local/bin/" ]]; then
-    mkdir $HOME/.local/bin
+    mkdir -p $HOME/.local/bin
 fi
 export PATH="$PATH:$HOME/.local/bin"
 

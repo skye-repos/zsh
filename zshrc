@@ -12,12 +12,13 @@ if [[ ! -d "$HOME/.local/bin/" ]]; then
 fi
 export PATH="$PATH:$HOME/.local/bin"
 
-if [[ -f "$HOME/.zprofile" ]]; then
+if [[ ! -L "$HOME/.zprofile" ]]; then
+  mv $HOME/.zprofile $HOME/.zprofile_old
+  ln -s $ZSHDIR/zprofile $HOME/.zprofile
   source $HOME/.zprofile
-fi
-
-if [[ -f "$HOME/.profile" ]]; then
-  source $HOME/.profile
+  echo "Backed up old .zprofile!!"
+else
+  source $HOME/.zprofile
 fi
 
 ## History File

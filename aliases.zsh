@@ -11,6 +11,10 @@ BREW='/opt/homebrew/bin/'
 PORT='/opt/local/bin/'
 UBIN='/usr/bin/'
 
+if [[ -x $BREW/nvim || -x $PORT/nvim || -x $UBIN/nvim ]]; then
+  export EDITOR='nvim'
+fi
+
 ## Homebrew aliases
 if [[ -x $BREW/brew ]]; then
 	alias install='brew install '
@@ -26,6 +30,8 @@ if [[ -x $BREW/brew ]]; then
   fi
   if [[ -x $BREW/bat ]]; then
     alias cat='bat '
+    export MANROFFOPT='-c'
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   fi
 fi
 
@@ -44,6 +50,8 @@ if [[ -x $PORT/port ]]; then
   fi
   if [[ -x $PORT/bat ]]; then
     alias cat='bat '
+    export MANROFFOPT='-c'
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   fi
 fi
 
@@ -60,7 +68,9 @@ if [[ -x $UBIN/apt ]]; then
 	fi
 	if [[ -x $UBIN/batcat ]]; then
 		alias cat='batcat '
-	fi	
+    export MANROFFOPT='-c'
+    export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+	fi
 fi
 
 if [[ -x $UBIN/dnf ]]; then
@@ -75,8 +85,10 @@ if [[ -x $UBIN/dnf ]]; then
 		alias ls='eza '
 	fi
 	if [[ -x $UBIN/bat ]]; then
-		alias cat='bat'
-	fi	
+		alias cat='bat '
+    export MANROFFOPT='-c'
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	fi
 fi
 
 # Changes to the 'ls' family of commands.
@@ -90,5 +102,3 @@ alias llnv='ll | grep --color=always "\-> $HOME" -v | awk '\''{print $7}'\'' ' #
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-

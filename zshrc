@@ -1,47 +1,29 @@
 # -*- mode: sh; -*-
 
-## Create ZSH Config Directory
-if [[ ! -d "$HOME/.config/zsh" ]]; then
-    mkdir -p $HOME/.config/zsh
-fi
 ZSHDIR="$HOME/.config/zsh"
-
-## PATH
-if [[ ! -d "$HOME/.local/bin/" ]]; then
-    mkdir -p $HOME/.local/bin
-fi
-export PATH="$PATH:$HOME/.local/bin"
-
-if [[ ! -L "$HOME/.zprofile" ]]; then
-  mv $HOME/.zprofile $HOME/.zprofile_old
-  ln -s $ZSHDIR/zprofile $HOME/.zprofile
-  source $HOME/.zprofile
-  echo "Backed up old .zprofile!!"
+## Check if zshrc is coming from correct place
+if [[ ! -f "$ZSHDIR/zshrc" || ! -L "$HOME/.zshrc" ]]; then
+  echo "Please run setup.zsh first"
 else
   source $HOME/.zprofile
+  source $ZSHDIR/auto-ls.zsh
+  source $ZSHDIR/aliases.zsh
+
+  ## Emacs keybinds
+  bindkey -e
+
+  ## History File
+  HISTFILE="$ZSHDIR/zsh_history"
+  HISTSIZE=10000
+  SAVEHIST=10000
+  setopt appendhistory
+
+  # Uncomment the following line to use case-sensitive completion.
+  CASE_SENSITIVE="true"
+
+  ## User configuration
+  export LANG=en_US.UTF-8
 fi
-
-## History File
-HISTFILE="$ZSHDIR/zsh_history"
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
-
-## User configuration
-export LANG=en_US.UTF-8
-
-## Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs'
-else
-  export EDITOR='emacsclient'
-fi
-
-## Aliases
-source $ZSHDIR/aliases.zsh
 
 ## Autosuggestions
 if [[ -d "$ZSHDIR/zsh-autosuggestions" ]]; then
@@ -63,15 +45,6 @@ fi
 
 bindkey              '^I'         menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
-
-## BAT as a manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-## Auto-ls when entering a directory
-source $ZSHDIR/auto-ls.zsh
-
-## Emacs keybinds
-bindkey -e
 
 ## Theme
 if [[ -f "$HOME/.local/bin/oh-my-posh" ]]; then

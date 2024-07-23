@@ -49,8 +49,8 @@ template = "{{ .HEAD }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end
   fetch_upstream_icon = true
 
 [palette]
-blue = '#89B4FA'
+blue = '#84D5FF'
 closer = 'p:os'
-lavender = '#B4BEFE'
-os = '#ACB0BE'
-pink = '#F5C2E7'
+lavender = '#D9C0FF'
+os = '#FFFFFF'
+pink = '#FEB1FE'

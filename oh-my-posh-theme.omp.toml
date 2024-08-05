@@ -2,7 +2,7 @@
 version = 2
 final_space = true
 auto_update = true
-
+auto_upgrade = true
 [[blocks]]
   type = 'prompt'
   alignment = 'left'

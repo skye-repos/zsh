@@ -1,7 +1,7 @@
 ## Home brew stuff
 if [[ -d "/opt/homebrew/bin/" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  export PKG_CONFIG=/opt/homebrew/bin/:$PKG_CONFIG
+  export PKG_CONFIG="/opt/homebrew/bin/:$PKG_CONFIG"
 fi
 
 ## PATH

@@ -32,6 +32,7 @@ if [[ -x $BREW/brew ]]; then
     alias cat='bat '
     export MANROFFOPT='-c'
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export BAT_THEME="base16"
   fi
 fi
 
@@ -52,6 +53,7 @@ if [[ -x $PORT/port ]]; then
     alias cat='bat '
     export MANROFFOPT='-c'
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export BAT_THEME="base16"
   fi
 fi
 
@@ -70,6 +72,7 @@ if [[ -x $UBIN/apt ]]; then
 		alias cat='batcat '
     export MANROFFOPT='-c'
     export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+    export BAT_THEME="base16"
 	fi
 fi
 
@@ -88,6 +91,7 @@ if [[ -x $UBIN/dnf ]]; then
 		alias cat='bat '
     export MANROFFOPT='-c'
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export BAT_THEME="base16"
 	fi
 fi
 

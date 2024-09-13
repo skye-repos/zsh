@@ -7,12 +7,34 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-BREW='/opt/homebrew/bin/'
-PORT='/opt/local/bin/'
-UBIN='/usr/bin/'
+BREW='/opt/homebrew/bin'
+PORT='/opt/local/bin'
+UBIN='/usr/bin'
 
 if [[ -x $BREW/nvim || -x $PORT/nvim || -x $UBIN/nvim ]]; then
   export EDITOR='nvim'
+fi
+
+if [[ -x $BREW/eza || -x $PORT/eza || -x $UBIN/eza || -x $HOME/.cargo/bin/eza ]]; then
+  alias ls='eza '
+fi
+
+if [[ -x $BREW/pinentry-mac || -x $PORT/pinentry-mac ]]; then
+  alias pinentry='pinentry-mac '
+fi
+
+if [[ -x $UBIN/batcat ]]; then
+	alias cat='batcat '
+  export MANROFFOPT='-c'
+  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+  export BAT_THEME="base16"
+fi
+
+if [[ -x $BREW/bat || -x $PORT/bat || -x $UBIN/bat ]]; then
+  alias cat='bat '
+  export MANROFFOPT='-c'
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  export BAT_THEME="base16"
 fi
 
 ## Homebrew aliases
@@ -22,18 +44,6 @@ if [[ -x $BREW/brew ]]; then
 	alias remove='brew uninstall '
 	alias update='brew update '
 	alias upgrade='brew upgrade '
-  if [[ -x $BREW/pinentry-mac ]]; then
-	  alias pinentry='pinentry-mac '
-  fi
-  if [[ -x $BREW/eza ]]; then
-    alias ls='eza '
-  fi
-  if [[ -x $BREW/bat ]]; then
-    alias cat='bat '
-    export MANROFFOPT='-c'
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    export BAT_THEME="base16"
-  fi
 fi
 
 ## MacPorts aliases
@@ -43,18 +53,6 @@ if [[ -x $PORT/port ]]; then
 	alias remove='sudo port uninstall '
 	alias update='sudo port selfupdate'
 	alias upgrade='sudo port upgrade '
-  if [[ -x $PORT/pinentry-mac ]]; then
-	  alias pinentry='pinentry-mac '
-  fi
-  if [[ -x $PORT/eza ]]; then
-    alias ls='eza '
-  fi
-  if [[ -x $PORT/bat ]]; then
-    alias cat='bat '
-    export MANROFFOPT='-c'
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    export BAT_THEME="base16"
-  fi
 fi
 
 if [[ -x $UBIN/apt ]]; then
@@ -65,15 +63,6 @@ if [[ -x $UBIN/apt ]]; then
 	alias upgrade='sudo apt upgrade '
   alias sctl='systemctl '
   alias jctl='journalctl '
-	if [[ -x $UBIN/eza || -x $HOME/.cargo/bin/eza ]]; then
-		alias ls='eza '
-	fi
-	if [[ -x $UBIN/batcat ]]; then
-		alias cat='batcat '
-    export MANROFFOPT='-c'
-    export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-    export BAT_THEME="base16"
-	fi
 fi
 
 if [[ -x $UBIN/dnf ]]; then
@@ -84,15 +73,6 @@ if [[ -x $UBIN/dnf ]]; then
 	alias upgrade='sudo dnf upgrade '
   alias sctl='systemctl '
   alias jctl='journalctl '
-	if [[ -x $UBIN/eza || -x $HOME/.cargo/bin/eza ]]; then
-		alias ls='eza '
-	fi
-	if [[ -x $UBIN/bat ]]; then
-		alias cat='bat '
-    export MANROFFOPT='-c'
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    export BAT_THEME="base16"
-	fi
 fi
 
 # Changes to the 'ls' family of commands.

@@ -27,14 +27,14 @@ if [[ -x $UBIN/batcat ]]; then
 	alias cat='batcat '
   export MANROFFOPT='-c'
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-  export BAT_THEME="base16"
+  export BAT_THEME="ansi"
 fi
 
 if [[ -x $BREW/bat || -x $PORT/bat || -x $UBIN/bat ]]; then
   alias cat='bat '
   export MANROFFOPT='-c'
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-  export BAT_THEME="base16"
+  export BAT_THEME="ansi"
 fi
 
 ## Homebrew aliases

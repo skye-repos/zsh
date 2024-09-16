@@ -39,38 +39,38 @@ fi
 
 ## Homebrew aliases
 if [[ -x $BREW/brew ]]; then
-	alias install='brew install '
-	alias search='brew search '
-	alias remove='brew uninstall '
-	alias update='brew update '
-	alias upgrade='brew upgrade '
+  alias install='brew install '
+  alias search='brew search '
+  alias remove='brew uninstall '
+  alias update='brew update '
+  alias upgrade='brew upgrade '
 fi
 
 ## MacPorts aliases
 if [[ -x $PORT/port ]]; then
-	alias install='sudo port install '
-	alias search='sudo port search '
-	alias remove='sudo port uninstall '
-	alias update='sudo port selfupdate'
-	alias upgrade='sudo port upgrade '
+  alias install='sudo port install '
+  alias search='sudo port search '
+  alias remove='sudo port uninstall '
+  alias update='sudo port selfupdate'
+  alias upgrade='sudo port upgrade '
 fi
 
 if [[ -x $UBIN/apt ]]; then
-	alias install='sudo apt install '
-	alias search='sudo apt search '
-	alias remove='sudo apt remove '
-	alias update='sudo apt update'
-	alias upgrade='sudo apt upgrade '
+  alias install='sudo apt install '
+  alias search='sudo apt search '
+  alias remove='sudo apt remove '
+  alias update='sudo apt update'
+  alias upgrade='sudo apt upgrade '
   alias sctl='systemctl '
   alias jctl='journalctl '
 fi
 
 if [[ -x $UBIN/dnf ]]; then
-	alias install='sudo dnf install '
-	alias search='sudo dnf search '
-	alias remove='sudo dnf remove '
-	alias update='sudo dnf updateinfo'
-	alias upgrade='sudo dnf upgrade '
+  alias install='sudo dnf install '
+  alias search='sudo dnf search '
+  alias remove='sudo dnf remove '
+  alias update='sudo dnf updateinfo'
+  alias upgrade='sudo dnf upgrade '
   alias sctl='systemctl '
   alias jctl='journalctl '
 fi

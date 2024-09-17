@@ -20,4 +20,10 @@ fi
 
 ln -s $ZSHDIR/zprofile $HOME/.zprofile
 ln -s $ZSHDIR/zshrc $HOME/.zshrc
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSHDIR/zsh-autosuggestions/
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSHDIR/zsh-autocomplete/
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/zsh-syntax-highlighting/
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $HOME/.local/bin/
+
 echo "Your ZSH config files are stored in $ZSHDIR. Please restart the shell."

@@ -1,3 +1,5 @@
+ZDOTDIR="$HOME/.config/zsh"
+
 ## PATH
 if [[ ! -d "$HOME/.local/bin/" ]]; then
     mkdir -p $HOME/.local/bin

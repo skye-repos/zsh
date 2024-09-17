@@ -1,3 +1,5 @@
+# -*- mode: sh; -*-
+
 ## PATH
 if [[ ! -d "$HOME/.local/bin/" ]]; then
   mkdir -p $HOME/.local/bin

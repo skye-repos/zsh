@@ -1,24 +1,23 @@
 # -*- mode: sh; -*-
 
+ZSHDIR=$HOME/.config/zsh
+
+## History File
+HISTFILE="$ZSHDIR/zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+  
+## Emacs keybinds
+bindkey -e
+
 ## Check if zshrc is coming from correct place
-if [[ ! -f "$ZDOTDIR/zshrc" || ! -L "$HOME/.zshrc" ]]; then
+if [[ ! -f $ZSHDIR/zshrc || ! -L "$HOME/.zshrc" ]]; then
   echo "Please run setup.zsh first"
 else
   source $HOME/.zprofile
-  source $ZDOTDIR/auto-ls.zsh
-  source $ZDOTDIR/aliases.zsh
-
-  ## Emacs keybinds
-  bindkey -e
-
-  ## Completions
-  compinit -d $ZDOTDIR/zcompdump
-
-  ## History File
-  HISTFILE="$ZDOTDIR/zsh_history"
-  HISTSIZE=10000
-  SAVEHIST=10000
-  setopt appendhistory
+  source $ZSHDIR/auto-ls.zsh
+  source $ZSHDIR/aliases.zsh
 
   # Uncomment the following line to use case-sensitive completion.
   CASE_SENSITIVE="true"
@@ -40,5 +39,5 @@ else
   eval "$(oh-my-posh init zsh --config "$ZSHDIR/oh-my-posh-theme.omp.toml")" 
 
 # Syntax Highlighting
-  source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $ZSHDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

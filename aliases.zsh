@@ -76,7 +76,7 @@ if [[ -x $UBIN/dnf ]]; then
 fi
 
 # Changes to the 'ls' family of commands.
-alias ll='ls -al' # The obvious answer.
+alias ll='ls -al --group-directories-first' # The obvious answer.
 alias l='ll -h' # Human readable.
 alias lg='ll --git' # List git status of individual files.
 alias lln='ll | grep --color=always "\-> $HOME" | awk '\''{print $7 $8 $9}'\'' ' # View symlinks in current folder.

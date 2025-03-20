@@ -1,188 +1,160 @@
-version = 2
-final_space = true
 console_title_template = ' {{ .Folder }} :: {{if .Root}}Admin{{end}}'
 terminal_background = 'p:t-background'
-
-[[blocks]]
-type = 'prompt'
-alignment = 'left'
-
-[[blocks.segments]]
-type = 'text'
-style = 'plain'
-template = '↯ '
-background = 'transparent'
-foreground = 'p:light-sky-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'path'
-style = 'plain'
-template = '<b>{{ .Path }}</b> '
-background = ''
-foreground = 'p:terminal-magenta'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[blocks.segments.properties]
-style = 'folder'
-
-[[blocks.segments]]
-type = 'git'
-style = 'plain'
-foreground_templates = [
-  '{{ if or (.Working.Changed) (.Staging.Changed) }}p:terminal-red{{ end }}',
-  '{{ if and (gt .Ahead 0) (gt .Behind 0)}}p:light-sky-blue {{ end }}',
-  '{{ if gt .Ahead 0 }}p:terminal-blue{{ end }}',
-  '{{ if gt .Behind 0 }}p:celeste-blue{{ end }}',
-]
-template = '({{ .HEAD}})'
-background = ''
-foreground = 'p:light-sky-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[blocks.segments.properties]
-branch_icon = ' '
-fetch_status = true
-
-[[blocks.segments]]
-type = 'status'
-style = 'plain'
-template = ' '
-background = ''
-foreground = 'p:terminal-red'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks]]
-type = 'prompt'
-alignment = 'right'
-overflow = 'hide'
-
-[[blocks.segments]]
-type = 'node'
-style = 'plain'
-template = ' {{ .Full }} '
-background = ''
-foreground = 'p:pistachio-green'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'php'
-style = 'plain'
-template = ' {{ .Full }} '
-background = ''
-foreground = 'p:terminal-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'python'
-style = 'plain'
-template = ' {{ .Full }}'
-background = ''
-foreground = 'p:terminal-yellow'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'julia'
-style = 'plain'
-template = ' {{ .Full }}'
-background = ''
-foreground = 'p:terminal-magenta'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'ruby'
-style = 'plain'
-template = ' {{ .Full}}'
-background = ''
-foreground = 'p:terminal-red'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'go'
-style = 'plain'
-template = 'ﳑ {{ .Full}}'
-background = ''
-foreground = 'p:light-sky-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[[blocks.segments]]
-type = 'command'
-style = 'plain'
-background = ''
-foreground = 'p:white-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[blocks.segments.properties]
-command = 'git log --pretty=format:%cr -1 || date +%H:%M:%S'
-shell = 'bash'
-
-[[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
-
-[[blocks.segments]]
-type = 'text'
-style = 'plain'
-template = '↳'
-background = ''
-foreground = 'p:pistachio-green'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[transient_prompt]
-template = '↯ '
-background = 'transparent'
-foreground = 'p:terminal-blue'
-Text = ''
-Duration = 0
-NameLength = 0
-
-[secondary_prompt]
-template = '↯ '
-background = 'transparent'
-foreground = 'p:celeste-blue'
-Text = ''
-Duration = 0
-NameLength = 0
+version = 3
+final_space = true
 
 [palette]
-blue-bell = '#B9C0FE'
-blue-black = '#7485AF'
-celeste-blue = '#8AECFF'
-light-sky-blue = '#8ACCFF'
-main-bg = '#04040C'
-pastal-grey = '#F9FFF9'
-pistachio-green = '#6ADFF7'
-t-background = 'p:main-bg'
-terminal-black = '#04040C'
-terminal-blue = '#74B5FF'
-terminal-green = '#8ADCEF'
-terminal-magenta = '#D8B0FE'
-terminal-red = '#FE81BE'
-terminal-white = '#FFD7FE'
-terminal-yellow = '#FFEEB0'
-white-blue = '#A9C0DF'
+  blue-bell = '#B9C0FE'
+  blue-black = '#7485AF'
+  celeste-blue = '#8AECFF'
+  light-sky-blue = '#8ACCFF'
+  main-bg = '#04040C'
+  pastal-grey = '#F9FFF9'
+  pistachio-green = '#6ADFF7'
+  t-background = 'p:main-bg'
+  terminal-black = '#04040C'
+  terminal-blue = '#74B5FF'
+  terminal-green = '#8ADCEF'
+  terminal-magenta = '#D8B0FE'
+  terminal-red = '#FE81BE'
+  terminal-white = '#FFD7FE'
+  terminal-yellow = '#FFEEB0'
+  white-blue = '#A9C0DF'
+
+[secondary_prompt]
+  template = '↯ '
+  foreground = 'p:celeste-blue'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '↯ '
+  foreground = 'p:terminal-blue'
+  background = 'transparent'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = '↯ '
+    foreground = 'p:light-sky-blue'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '<b>{{ .Path }}</b> '
+    foreground = 'p:terminal-magenta'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'folder'
+
+  [[blocks.segments]]
+    template = '({{ .HEAD}})'
+    foreground = 'p:light-sky-blue'
+    type = 'git'
+    style = 'plain'
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:terminal-red{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0)}}p:light-sky-blue {{ end }}', '{{ if gt .Ahead 0 }}p:terminal-blue{{ end }}', '{{ if gt .Behind 0 }}p:celeste-blue{{ end }}']
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      cache_duration = 'none'
+      fetch_status = true
+
+  [[blocks.segments]]
+    template = ' '
+    foreground = 'p:terminal-red'
+    type = 'status'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  overflow = 'hide'
+
+  [[blocks.segments]]
+    template = ' {{ .Full }} '
+    foreground = 'p:pistachio-green'
+    type = 'node'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = ' {{ .Full }} '
+    foreground = 'p:terminal-blue'
+    type = 'php'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = ' {{ .Full }}'
+    foreground = 'p:terminal-yellow'
+    type = 'python'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = ' {{ .Full }}'
+    foreground = 'p:terminal-magenta'
+    type = 'julia'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = ' {{ .Full}}'
+    foreground = 'p:terminal-red'
+    type = 'ruby'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = 'ﳑ {{ .Full}}'
+    foreground = 'p:light-sky-blue'
+    type = 'go'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    foreground = 'p:white-blue'
+    type = 'command'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      command = 'git log --pretty=format:%cr -1 || date +%H:%M:%S'
+      shell = 'bash'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '↳'
+    foreground = 'p:pistachio-green'
+    type = 'text'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'

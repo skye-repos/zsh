@@ -10,16 +10,17 @@ alias ....='cd ../../..'
 BREW='/opt/homebrew/bin'
 PORT='/opt/local/bin'
 UBIN='/usr/bin'
+NIXP='/run/current-system/sw/bin'
 
-if [[ -x $BREW/nvim || -x $PORT/nvim || -x $UBIN/nvim ]]; then
+if [[ -x $BREW/nvim || -x $PORT/nvim || -x $UBIN/nvim || -x $NIXP/nvim ]]; then
   export EDITOR='nvim'
 fi
 
-if [[ -x $BREW/eza || -x $PORT/eza || -x $UBIN/eza || -x $HOME/.cargo/bin/eza ]]; then
+if [[ -x $BREW/eza || -x $PORT/eza || -x $UBIN/eza || -x $NIXP/eza ]]; then
   alias ls='eza '
 fi
 
-if [[ -x $BREW/pinentry-mac || -x $PORT/pinentry-mac ]]; then
+if [[ -x $BREW/pinentry-mac || -x $PORT/pinentry-mac || -x $NIXP/pinentry-mac ]]; then
   alias pinentry='pinentry-mac '
 fi
 
@@ -30,7 +31,7 @@ if [[ -x $UBIN/batcat ]]; then
   export BAT_THEME="ansi"
 fi
 
-if [[ -x $BREW/bat || -x $PORT/bat || -x $UBIN/bat ]]; then
+if [[ -x $BREW/bat || -x $PORT/bat || -x $UBIN/bat || -x $NIXP/bat ]]; then
   alias cat='bat '
   export MANROFFOPT='-c'
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -53,6 +54,12 @@ if [[ -x $PORT/port ]]; then
   alias remove='sudo port uninstall '
   alias update='sudo port selfupdate'
   alias upgrade='sudo port upgrade '
+fi
+
+## Nix darwin aliases
+if [[ -d /nix ]]; then
+  alias update='nix flake update'
+  alias rebuild='darwin rebuild switch --flake ~/.config/nix-darwin/flake.nix'
 fi
 
 if [[ -x $UBIN/apt ]]; then

@@ -58,8 +58,8 @@ fi
 
 ## Nix darwin aliases
 if [[ -d /nix ]]; then
-  alias update='nix flake update'
-  alias rebuild='darwin rebuild switch --flake ~/.config/nix-darwin/flake.nix'
+  alias update='nix flake update --flake ~/.config/nix-darwin'
+  alias rebuild='darwin-rebuild switch --flake ~/.config/nix-darwin'
 fi
 
 if [[ -x $UBIN/apt ]]; then
